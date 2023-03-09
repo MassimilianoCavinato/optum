@@ -4,14 +4,13 @@ import MultipleChoice from "./MultipleChoice";
 import Slider from "./Slider";
 
 const Question = ({ question }) => {
-  console.log(question);
   const renderInput = () => {
     switch (question.type) {
       case "multiple choice":
         return <MultipleChoice options={question.options} />;
         break;
       case "slider":
-        return <Slider min={0} max={question.maxValue} />;
+        return <Slider max_value={question.maxValue} />;
         break;
       case "date picker":
         return <DatePicker />;
