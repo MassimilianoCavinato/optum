@@ -1,67 +1,17 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { SurveyContext } from "../SurveyContextProvider";
 import Question from "./Question";
+import Navigator from "./Navigator";
+import Summary from "./Summary";
 
-const Survey = ({ questions }) => {
-  const [question_index, setQuestionIndex] = useState(0);
-
-  const renderNavigator = () => {
-    if (question_index === 0) {
-      return (
-        <div>
-          <button
-            onClick={(e) => {
-              setQuestionIndex(question_index + 1);
-            }}
-          >
-            Next
-          </button>
-        </div>
-      );
-    } else if (question_index >= questions.length - 1) {
-      return (
-        <div>
-          <button
-            onClick={(e) => {
-              setQuestionIndex(question_index - 1);
-            }}
-          >
-            Previous
-          </button>
-          <button
-            onClick={(e) => {
-              console.log("todo");
-            }}
-          >
-            Summary
-          </button>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <button
-            onClick={(e) => {
-              setQuestionIndex(question_index - 1);
-            }}
-          >
-            Previous
-          </button>
-          <button
-            onClick={(e) => {
-              setQuestionIndex(question_index + 1);
-            }}
-          >
-            Next
-          </button>
-        </div>
-      );
-    }
-  };
+const Survey = () => {
+  const { data, question_index, show_summary } = useContext(SurveyContext);
 
   return (
     <>
-      <Question question={questions[question_index]} />
-      {renderNavigator()}
+      <Question question={data[question_index]} />
+      <Navigator />
+      {show_summary ? <Summary /> : ""}
     </>
   );
 };

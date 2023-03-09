@@ -1,4 +1,4 @@
-import DatePicker from "./DatePiucker";
+import DatePicker from "./DatePicker";
 import FreeText from "./FreeText";
 import MultipleChoice from "./MultipleChoice";
 import Slider from "./Slider";
