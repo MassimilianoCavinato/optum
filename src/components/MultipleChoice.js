@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { SurveyContext } from "../SurveyContextProvider";
+
 const MultipleChoice = ({ options }) => {
   const { choice, setChoice } = useContext(SurveyContext);
   return (

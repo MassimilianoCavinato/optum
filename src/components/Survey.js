@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Question from "./Question";
-import { SurveyContextProvider } from "../SurveyContextProvider";
 
 const Survey = ({ questions }) => {
   const [question_index, setQuestionIndex] = useState(0);
@@ -60,10 +59,10 @@ const Survey = ({ questions }) => {
   };
 
   return (
-    <SurveyContextProvider>
+    <>
       <Question question={questions[question_index]} />
       {renderNavigator()}
-    </SurveyContextProvider>
+    </>
   );
 };
 

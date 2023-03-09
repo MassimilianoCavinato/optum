@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Survey from "./components/Survey";
+import { SurveyContextProvider } from "./SurveyContextProvider";
 
 const App = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    setData([
+    let list = [
       {
         id: 1,
         type: "multiple choice",
@@ -29,10 +30,16 @@ const App = () => {
         type: "free text",
         text: "Please enter some comments below",
       },
-    ]);
+    ];
+    console.log(list);
+    setData(list);
   }, []);
 
-  return <Survey questions={data} />;
+  return (
+    <SurveyContextProvider>
+      <Survey questions={data} />
+    </SurveyContextProvider>
+  );
 };
 
 export default App;
